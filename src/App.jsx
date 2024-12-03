@@ -16,6 +16,7 @@ export default function App() {
               <Link to={"/customers"}>Customers</Link>
               <Link to={"/trainings"}>Trainings</Link>
               <Link to={"/calendar"}>Calendar</Link>
+              <Link to={"/chart"}>Chart</Link>
             </nav>
           </div>
         </AppBar>

@@ -82,15 +82,17 @@ export default function TrainingList() {
 
   return (
     <>
-      <Box style={{ height: 800, width: '100%' }}>
-        <DataGrid 
-          rows={trainings}
-          columns={columns}
-          slots={{
-            toolbar: CustomToolbar,
-          }}
-        />
-      </Box>
+      <div style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
+        <Box style={{ height: 800, width: 'auto' }}>
+          <DataGrid 
+            rows={trainings}
+            columns={columns}
+            slots={{
+              toolbar: CustomToolbar,
+            }}
+          />
+        </Box>
+      </div>
       <Snackbar
         open={open}
         message="Training deleted"

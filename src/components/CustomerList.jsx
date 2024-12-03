@@ -97,14 +97,16 @@ export default function CustomerList() {
     <div style={{ height: 60, display: "grid", justifyItems: "end", padding: 10 }}>
       <AddCustomer handleFetch={handleFetch} />
     </div>
-    <div style={{ height: 800, width: "100%" }}>
-      <DataGrid 
-        rows={customers}
-        columns={columns}
-        slots={{
-          toolbar: CustomToolbar,
-        }}
-      />
+    <div style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
+      <div style={{ height: 800, width: "auto" }}>
+        <DataGrid 
+          rows={customers}
+          columns={columns}
+          slots={{
+            toolbar: CustomToolbar,
+          }}
+        />
+      </div>
     </div>
       <Snackbar
         open={open}

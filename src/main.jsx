@@ -8,6 +8,7 @@ import Home from './components/Home';
 import CustomerList from './components/CustomerList';
 import TrainingList from './components/TrainingList';
 import Calendar from './components/Calendar';
+import Chart from './components/Chart';
 
 const router = createHashRouter([
   {
@@ -31,6 +32,10 @@ const router = createHashRouter([
       {
         path: "calendar",
         element: <Calendar />,
+      },
+      {
+        path: "chart",
+        element: <Chart />,
       },
     ]
   },
