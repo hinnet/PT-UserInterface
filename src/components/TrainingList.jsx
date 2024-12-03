@@ -4,7 +4,8 @@ import { DataGrid, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarDe
 import { DeleteForever } from '@mui/icons-material';
 import dayjs from "dayjs";
 
-import { getTrainings, deleteTraining } from "../trainingapi";
+import { deleteTraining } from "../trainingapi";
+import mappingService from "./trainingMappingService";
 
 function CustomToolbar() {
   return (
@@ -58,41 +59,12 @@ export default function TrainingList() {
     handleFetch();
   }, []);
 
-  // (Promise chain)
   const handleFetch = () => {
-    getTrainings()
-      .then(data => {
-      const trainings = data._embedded.trainings;
-      // Käydään läpi treenit ja jokaisen treenin asiakas. Lisätään tiedot fetchPromises-taulukkoon.
-      const fetchPromises = trainings.map((training, index) => {
-        training.id = index;
-        if (training._links.customer) {
-          return fetch(training._links.customer.href)
-          .then(response => response.json())
-          .then(customerData => {
-            training.customer = `${customerData.firstname} ${customerData.lastname}`;
-            return training;
-          })
-          .catch((err) => {
-            console.error(err)
-            training.customer = "";
-            return training;
-          });
-        } else {
-          return Promise.resolve(training);
-        }
-      });
-
-      // Promise.all(fetchPromises) odottaa, että kaikki taulukossa olevat lupaukset (= fetch-pyynnöt) on tehty, jonka jälkeen siirrytään eteenpäin.
-      Promise.all(fetchPromises)
+    mappingService()
       .then(trainingsWithCustomers => {
         setTrainings(trainingsWithCustomers);
       })
-      // Promise.all error, virhe asiakastietojen hakemisessa
-      .catch((err) => console.error(err));
-    })
-    // getTrainings() error, virhe treenien hakemisessa
-    .catch((err) => console.error(err));
+      .catch((err) => console.log(err))
   };
 
   const handleDelete = (params) => {
