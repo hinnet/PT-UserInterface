@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Error from './components/Error';
@@ -9,8 +9,9 @@ import CustomerList from './components/CustomerList';
 import TrainingList from './components/TrainingList';
 import Calendar from './components/Calendar';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
+    basename: import.meta.env.BASE_URL,
     path: "/",
     element: <App />,
     errorElement: <Error />,

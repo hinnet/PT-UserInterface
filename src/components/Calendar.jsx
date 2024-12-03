@@ -55,10 +55,9 @@ export default function Calendar() {
   };
 
   const events = trainings.map(training => ({
-      title: training.activity,
+      title: `${training.activity} / ${training.customer}`,
       start: training.date,
       end: calculateEndDate(training.date, training.duration),
-      description: training.customer,
       display: 'block'
   }));
 
