@@ -98,7 +98,7 @@ export default function CustomerList() {
       <AddCustomer handleFetch={handleFetch} />
     </div>
     <div style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
-      <div style={{ height: 800, width: "auto" }}>
+      <div style={{ height: 800, width: "90%" }}>
         <DataGrid 
           rows={customers}
           columns={columns}

@@ -83,7 +83,7 @@ export default function TrainingList() {
   return (
     <>
       <div style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
-        <Box style={{ height: 800, width: 'auto' }}>
+        <Box style={{ height: 800, width: '90%' }}>
           <DataGrid 
             rows={trainings}
             columns={columns}
