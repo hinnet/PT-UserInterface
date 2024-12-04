@@ -21,7 +21,7 @@ export default function mappingService() {
           training.customer = "";
           return training;
         });
-      } else {
+      } else { // Palauttaa treenin sellaisenaan, jos asiakaslinkkiä ei ole
         return Promise.resolve(training);
       }
     });
