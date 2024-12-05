@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Box, Button, Snackbar } from "@mui/material";
-import { DataGrid, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarDensitySelector, GridToolbarFilterButton } from '@mui/x-data-grid';
-import { DeleteForever } from '@mui/icons-material';
+import {
+  DataGrid,
+  GridToolbarColumnsButton,
+  GridToolbarContainer,
+  GridToolbarDensitySelector,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
+import { DeleteForever } from "@mui/icons-material";
 import dayjs from "dayjs";
 
 import { deleteTraining } from "../trainingapi";
@@ -13,9 +19,9 @@ function CustomToolbar() {
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector
-        slotProps={{ tooltip: {title: "Change density"} }}
+        slotProps={{ tooltip: { title: "Change density" } }}
       />
-  </GridToolbarContainer>
+    </GridToolbarContainer>
   );
 }
 
@@ -23,36 +29,43 @@ export default function TrainingList() {
   const [trainings, setTrainings] = useState([]);
   const [open, setOpen] = useState(false);
 
- const columns = [
-    { 
-      field: "date", 
+  const columns = [
+    {
+      field: "date",
       headerName: "Date",
-      renderCell: params => dayjs(params.value).format('DD.MM.YYYY HH:mm'),
-      width: 180
+      renderCell: (params) => dayjs(params.value).format("DD.MM.YYYY HH:mm"),
+      width: 180,
     },
-    { 
+    {
       field: "duration",
       headerName: "Duration",
-      width: 100
+      width: 100,
     },
-    { 
+    {
       field: "activity",
       headerName: "Activity",
-      width: 180
+      width: 180,
     },
-    { 
+    {
       field: "customer",
       headerName: "Customer",
-      width: 200
+      width: 200,
     },
     {
       field: "delete",
-      headerName: "", 
-      sortable: false, 
-      renderCell: params => 
-        <Button color="error" endIcon={<DeleteForever />} onClick={() => handleDelete(params.row)}>Delete</Button>, 
+      headerName: "",
+      sortable: false,
+      renderCell: (params) => (
+        <Button
+          color="error"
+          endIcon={<DeleteForever />}
+          onClick={() => handleDelete(params.row)}
+        >
+          Delete
+        </Button>
+      ),
       width: 150,
-    }
+    },
   ];
 
   useEffect(() => {
@@ -61,10 +74,10 @@ export default function TrainingList() {
 
   const handleFetch = () => {
     mappingService()
-      .then(trainingsWithCustomers => {
+      .then((trainingsWithCustomers) => {
         setTrainings(trainingsWithCustomers);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   const handleDelete = (params) => {
@@ -82,9 +95,15 @@ export default function TrainingList() {
 
   return (
     <>
-      <div style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
-        <Box style={{ height: 800, width: '90%' }}>
-          <DataGrid 
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box style={{ height: 800, width: "90%" }}>
+          <DataGrid
             rows={trainings}
             columns={columns}
             slots={{

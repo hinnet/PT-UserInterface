@@ -20,46 +20,43 @@ export function deleteCustomer(url) {
 }
 
 export function saveCustomer(newCustomer) {
-  return fetch(customersUrl, { 
+  return fetch(customersUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newCustomer)
-  })
-  .then (response => {
+    body: JSON.stringify(newCustomer),
+  }).then((response) => {
     if (!response.ok)
       throw new Error("Error in saving: " + response.statusText);
 
     return response.json();
-  })
+  });
 }
 
 export function updateCustomer(url, customer) {
-  return fetch(url, { 
+  return fetch(url, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(customer)
-  })
-  .then (response => {
+    body: JSON.stringify(customer),
+  }).then((response) => {
     if (!response.ok)
       throw new Error("Error in saving: " + response.statusText);
 
     return response.json();
-  })
+  });
 }
 
 export function saveTrainingOfCustomer(url, newTraining) {
-  return fetch(trainingsUrl, { 
+  return fetch(trainingsUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...newTraining,
-    customer: url 
-    })
-  })
-  .then (response => {
+      customer: url,
+    }),
+  }).then((response) => {
     if (!response.ok)
       throw new Error("Error in saving: " + response.statusText);
 
     return response.json();
-  })
+  });
 }

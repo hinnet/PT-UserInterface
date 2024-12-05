@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
-import App from './App';
-import Error from './components/Error';
-import Home from './components/Home';
-import CustomerList from './components/CustomerList';
-import TrainingList from './components/TrainingList';
-import Calendar from './components/Calendar';
-import Chart from './components/Chart';
+import App from "./App";
+import Error from "./components/Error";
+import Home from "./components/Home";
+import CustomerList from "./components/CustomerList";
+import TrainingList from "./components/TrainingList";
+import Calendar from "./components/Calendar";
+import Chart from "./components/Chart";
 
 const router = createHashRouter([
   {
@@ -19,7 +19,7 @@ const router = createHashRouter([
     children: [
       {
         element: <Home />,
-        index: true
+        index: true,
       },
       {
         path: "customers",
@@ -37,12 +37,12 @@ const router = createHashRouter([
         path: "chart",
         element: <Chart />,
       },
-    ]
+    ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
